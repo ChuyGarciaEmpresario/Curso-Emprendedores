@@ -42,30 +42,6 @@ h1{
   transform:scale(1.1);
 }
 
-/* FLECHA */
-.flecha{
-  position:absolute;
-  bottom:20px;
-  left:50%;
-  transform:translateX(-50%);
-  font-size:40px;
-  animation:mover 1.5s infinite;
-  cursor:pointer;
-  color:white;
-}
-
-@keyframes mover{
-  0%{ transform:translate(-50%,0); }
-  50%{ transform:translate(-50%,10px); }
-  100%{ transform:translate(-50%,0); }
-}
-
-.ocultar{
-  opacity:0;
-  transition:0.5s;
-  pointer-events:none;
-}
-
 /* TARJETAS */
 .card, .card-formulario{
   background:#3f3f3f;
@@ -75,15 +51,19 @@ h1{
   max-width:1000px;
   margin:40px auto;
   box-shadow:0 20px 50px rgba(0,0,0,0.25);
-  transition:0.3s ease;
   text-align:center;
-  position:relative;
 }
 
-.card:hover, .card-formulario:hover{
-  transform:translateY(-5px);
+/* VIDEO INTRO */
+.video-intro{
+  width:100%;
+  max-width:850px;
+  border-radius:20px;
+  margin-top:30px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.4);
 }
 
+/* SECCIONES */
 section{
   padding:40px 20px;
   opacity:0;
@@ -96,12 +76,45 @@ section.visible{
   transform:translateY(0);
 }
 
-/* IMÁGENES GRANDES */
-.imagen-seccion{
+/* SLIDER IMÁGENES */
+.slider-testimonios{
   width:100%;
-  max-width:850px;
-  margin:30px auto 0 auto;
-  display:block;
+  max-width:800px;
+  margin:20px auto 0 auto;
+  overflow:hidden;
+  border-radius:20px;
+  height:400px;
+  position:relative;
+}
+
+.slide-testimonio{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  position:absolute;
+  top:0;
+  left:0;
+  opacity:0;
+  transition:opacity 1.5s ease-in-out;
+}
+
+.slide-testimonio.active{
+  opacity:1;
+  position:relative;
+}
+
+/* VIDEOS TESTIMONIOS */
+.videos-testimonios{
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+  justify-content:center;
+  margin-top:20px;
+}
+
+.videos-testimonios video{
+  width:100%;
+  max-width:400px;
   border-radius:20px;
   box-shadow:0 15px 40px rgba(0,0,0,0.4);
 }
@@ -120,7 +133,6 @@ input{
   border-radius:10px;
   border:none;
   background:#f2f2f2;
-  color:#000;
 }
 
 button{
@@ -129,42 +141,8 @@ button{
   border-radius:10px;
   background:white;
   color:black;
-  font-size:16px;
-  cursor:pointer;
-  transition:0.3s;
   font-weight:bold;
-}
-
-button:hover{
-  background:#ddd;
-  transform:scale(1.05);
-}
-
-/* SLIDER TESTIMONIOS */
-.slider-testimonios{
-  width:100%;
-  max-width:800px;
-  margin:20px auto 0 auto;
-  overflow:hidden;
-  border-radius:20px;
-  height:400px; /* altura fija */
-  position:relative;
-}
-
-.slide-testimonio{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  position:absolute;
-  top:0;
-  left:0;
-  opacity:0;
-  transition:opacity 1.5s ease-in-out;
-}
-
-.slide-testimonio.active{
-  opacity:1;
-  position:relative; /* para que la tarjeta crezca */
+  cursor:pointer;
 }
 </style>
 </head>
@@ -175,14 +153,17 @@ button:hover{
 <h1>De empleado a emprendedor en 30 días y en 90 días empresario</h1>
 <p>Convierte tu idea en un negocio real y comienza a generar ingresos propios.</p>
 <a class="btn" href="https://api.whatsapp.com/send?phone=5218331504445">Quiero emprender</a>
-<div class="flecha" id="flecha">⬇</div>
 </header>
 
+<!-- INTRO CON VIDEO -->
 <section>
 <div class="card">
-<h2>UNETE a la Nueva Generacion DM
-(De Millonarios)</h2>
-<img src="imagen7.jpeg" alt="Foto introductoria" class="imagen-seccion">
+<h2>UNETE a la Nueva Generacion DM (De Millonarios)</h2>
+
+<video class="video-intro" controls>
+  <source src="video2.mp4" type="video/mp4">
+</video>
+
 </div>
 </section>
 
@@ -207,34 +188,31 @@ button:hover{
 
 <section>
 <div class="card">
-<h2>Nuestro sistema</h2>
-<p>Creea-conecta-Enrola y venderás 
-Tus productos y Servicios</p>
-</div>
-</section>
-
-<section>
-<div class="card">
-<h2>¿Quién soy?</h2>
-<p>Soy empresario con experiencia en creación de negocios y estrategias de venta.
-He ayudado a personas a transformar sus ideas en proyectos reales y rentables.</p>
-<img src="imagen6.jpeg" alt="Autor del curso" class="imagen-seccion">
-</div>
-</section>
-
-<section>
-<div class="card">
-<h2>Testimonios</h2>
+<h2>Testimonios en Imágenes</h2>
 <div class="slider-testimonios">
-  <img src="imagen10.jpeg" class="slide-testimonio active" alt="Testimonio 1">
-  <img src="imagen11.jpeg" class="slide-testimonio" alt="Testimonio 2">
-  <img src="imagen12.jpeg" class="slide-testimonio" alt="Testimonio 3">
-  <img src="imagen13.jpeg" class="slide-testimonio" alt="Testimonio 4">
-  <img src="imagen14.jpeg" class="slide-testimonio" alt="Testimonio 5">
-  <img src="imagen15.jpeg" class="slide-testimonio" alt="Testimonio 6">
-  <img src="imagen16.jpeg" class="slide-testimonio" alt="Testimonio 7">
-  <img src="imagen17.jpeg" class="slide-testimonio" alt="Testimonio 8">
+  <img src="imagen20.jpeg" class="slide-testimonio active">
+  <img src="imagen21.jpeg" class="slide-testimonio">
+  <img src="imagen22.jpeg" class="slide-testimonio">
+  <img src="imagen23.jpeg" class="slide-testimonio">
 </div>
+</div>
+</section>
+
+<!-- NUEVO CUADRO DE VIDEOS -->
+<section>
+<div class="card">
+<h2>Testimonios en Video</h2>
+
+<div class="videos-testimonios">
+  <video controls>
+    <source src="video1.mp4" type="video/mp4">
+  </video>
+
+  <video controls>
+    <source src="videoTestimonio2.mp4" type="video/mp4">
+  </video>
+</div>
+
 </div>
 </section>
 
@@ -242,7 +220,6 @@ He ayudado a personas a transformar sus ideas en proyectos reales y rentables.</
 <div class="card-formulario">
 <h2>Reserva tu lugar</h2>
 <form action="https://formspree.io/f/mwvnvdgg" method="POST">
-<input type="hidden" name="_redirect" value="https://gebervelazquezmoreno.github.io/Curso-Emprendedores/gracias.html">
 <input type="text" name="nombre" placeholder="Nombre completo" required>
 <input type="number" name="edad" placeholder="Edad" required>
 <input type="tel" name="telefono" placeholder="Teléfono" required>
@@ -252,21 +229,8 @@ He ayudado a personas a transformar sus ideas en proyectos reales y rentables.</
 </div>
 </section>
 
-<section>
-<div class="card">
-<h2>Información del Curso</h2>
-<p>📅 Inicio próximamente</p>
-<p>📍 Modalidad presencial / online</p>
-<p>🎓 Incluye Diploma</p>
-<p>⚠️ Cupos limitados</p>
-<img src="imagen1.jpeg" alt="Información del curso" class="imagen-seccion">
-</div>
-</section>
-
 <script>
 const sections = document.querySelectorAll("section");
-const flecha = document.getElementById("flecha");
-
 window.addEventListener("scroll", () => {
 sections.forEach(sec => {
   const top = sec.getBoundingClientRect().top;
@@ -274,22 +238,9 @@ sections.forEach(sec => {
     sec.classList.add("visible");
   }
 });
-
-if(window.scrollY > 100){
-  flecha.classList.add("ocultar");
-}else{
-  flecha.classList.remove("ocultar");
-}
 });
 
-flecha.addEventListener("click", ()=>{
-window.scrollTo({
-top: window.innerHeight,
-behavior: "smooth"
-});
-});
-
-// Slider de testimonios
+// Slider automático
 let slidesTest = document.querySelectorAll(".slide-testimonio");
 let indexTest = 0;
 setInterval(()=>{
