@@ -320,14 +320,54 @@ He ayudado a personas a transformar sus ideas en proyectos reales y rentables.</
 
 <section>
 <div class="card">
-<h2>Información del Curso</h2>
-<p>📅 Inicio próximamente</p>
-<p>📍 Modalidad presencial / online</p>
-<p>🎓 Incluye Diploma</p>
-<p>⚠️ Cupos limitados</p>
 <img src="imagen1.jpeg" class="imagen-seccion">
+<h2>Información del Curso</h2>
+<p>"Aprenderás qué es el dinero y cómo tenerlo. ¿Por qué mucha gente, a pesar de tener años trabajando, no tiene dinero?
+¿Por qué la gente que lo busca no lo tiene, o solo lo tiene por un tiempo y se le va de las manos?
+O tal vez la gente sabe, está preparada, pero hay algo que no deja que uno haga lo que sabe.
+
+Al comprarlo:
+- Si eres de la ciudad, se te entrega físicamente.
+- Si eres de fuera, se te envía por PDF.
+
+Y a los que lo compren:
+- Se les regala una consulta de coach gratis sobre el curso.
+- Se les invita a un emprendimiento para practicar lo aprendido.
+
+¡Adquiérelo hoy mismo! 😊</p>
 </div>
 </section>
+  <!-- ================= COMPRA FINAL ================= -->
+<section>
+<div class="card">
+<h2>Comprar Curso Generación DM</h2>
+<p>Acceso inmediato después de confirmar tu pago</p>
+
+<button onclick="abrirPago()" class="btn" style="background:#FFD700;color:black;">
+💳 Comprar ahora
+</button>
+
+<p id="confirmacionPago" style="margin-top:15px;color:#25D366;font-weight:bold;"></p>
+</div>
+</section>
+
+<!-- MODAL DE PAGO -->
+<div id="modalPago" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);z-index:999;justify-content:center;align-items:center;">
+<div style="background:white;color:black;padding:30px;border-radius:20px;text-align:center">
+
+<h3>Selecciona tu forma de pago</h3>
+
+<button onclick="pagar('Transferencia')" style="margin:10px;padding:12px 20px;border:none;border-radius:10px;background:#25D366;color:white;">Transferencia</button>
+
+<button onclick="pagar('OXXO')" style="margin:10px;padding:12px 20px;border:none;border-radius:10px;background:#FF9900;color:white;">OXXO</button>
+
+<button onclick="pagar('Efectivo')" style="margin:10px;padding:12px 20px;border:none;border-radius:10px;background:#444;color:white;">Efectivo</button>
+
+<br><br>
+<button onclick="cerrarPago()" style="background:red;color:white;border:none;padding:8px 15px;border-radius:8px;">Cerrar</button>
+
+</div>
+</div>
 
 <script>
 const sections = document.querySelectorAll("section");
@@ -373,6 +413,41 @@ setInterval(()=>{
   indexTest = (indexTest + 1) % slidesTest.length;
   slidesTest[indexTest].classList.add("active");
 },4000);
+  // ================= PAGOS AUTOMÁTICOS =================
+
+function abrirPago(){
+document.getElementById("modalPago").style.display="flex";
+}
+
+function cerrarPago(){
+document.getElementById("modalPago").style.display="none";
+}
+
+function pagar(metodo){
+
+const codigo = "DM-" + Date.now().toString().slice(-5);
+
+// Mostrar confirmación
+document.getElementById("confirmacionPago").innerText=
+"✅ Tu código de compra es: "+codigo;
+
+// Mensaje automático WhatsApp
+const mensaje=encodeURIComponent(
+`Hola, acabo de comprar Generación DM
+
+Código: ${codigo}
+Método: ${metodo}
+
+Mi nombre es: `
+);
+
+// Redirigir a WhatsApp
+setTimeout(()=>{
+window.location.href=
+"https://api.whatsapp.com/send?phone=5218331504445&text="+mensaje;
+},1200);
+
+}
 </script>
 
 </body>
