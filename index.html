@@ -9,235 +9,211 @@
 body{
   margin:0;
   font-family:Arial, sans-serif;
-  background:#020617;
+  background:#0f172a;
   color:white;
 }
 
-/* HERO */
-.hero{
-  text-align:center;
-  padding:70px 20px;
-  background:linear-gradient(120deg,#0ea5e9,#22c55e);
-}
-
-.hero h1{
-  font-size:28px;
-}
-
-/* GRID TARJETAS */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-  gap:20px;
+/* CONTENEDOR */
+.contenedor{
+  max-width:1100px;
+  margin:auto;
   padding:40px 20px;
 }
 
+/* TARJETAS */
 .card{
-  background:#0f172a;
+  background:#020617;
   border-radius:18px;
   overflow:hidden;
+  margin-bottom:30px;
   cursor:pointer;
   transition:.4s;
+  box-shadow:0 20px 60px rgba(0,0,0,.5);
+  position:relative;
 }
 
 .card:hover{
-  transform:scale(1.1);
+  transform:scale(1.03);
 }
 
+/* IMAGEN */
 .card img{
   width:100%;
-  height:160px;
+  height:230px;
   object-fit:cover;
+  transition:.5s;
 }
 
-.modal{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,.85);
-  display:none;
-  justify-content:center;
-  align-items:flex-start; /* 👈 permite scroll */
-  overflow-y:auto; /* 👈 scroll vertical */
-  padding:40px 0;
-  z-index:999;
+.card.abierta img{
+  height:380px;
+  transform:scale(1.05);
 }
 
-.modal-content{
-  width:90%;
-  max-width:520px;
-  position:relative;
-  animation:fadeIn .4s ease;
+/* TITULO */
+.titulo{
+  padding:20px;
+  font-size:20px;
+  font-weight:bold;
+  background:#020617;
 }
 
-@keyframes fadeIn{
-  from{opacity:0; transform:scale(.9)}
-  to{opacity:1; transform:scale(1)}
+/* CONTENIDO DESLIZABLE */
+.contenido{
+  max-height:0;
+  overflow:hidden;
+  transition:.6s ease;
+  background:#020617;
 }
 
-/* IMAGEN GRANDE */
-.img-grande{
-  width:100%;
-  border-radius:20px;
-  animation:subir .5s ease;
+.card.abierta .contenido{
+  max-height:700px;
+  padding:20px;
 }
 
-@keyframes subir{
-  from{transform:translateY(80px)}
-  to{transform:translateY(0)}
-}
-
-/* TEXTO DESLIZADO */
-.info{
-  background:white;
-  color:black;
-  margin-top:-25px;
-  padding:22px;
-  border-radius:0 0 20px 20px;
-  animation:slideUp .6s ease;
-}
-
-@keyframes slideUp{
-  from{transform:translateY(120px);opacity:0}
-  to{transform:translateY(0);opacity:1}
-}
-
+/* VIDEO */
 video{
   width:100%;
   border-radius:12px;
   margin-top:15px;
 }
 
-.close{
-  position:absolute;
-  top:-10px;
-  right:0;
-  font-size:25px;
-  cursor:pointer;
-}
-
-/* COMPRA */
-.compra{
-  text-align:center;
-  padding:60px 20px;
+/* BOTONES */
+.botones{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:15px;
 }
 
 .btn{
-  background:#22c55e;
-  padding:16px 28px;
-  border-radius:14px;
-  color:white;
+  padding:12px 18px;
+  border-radius:10px;
   text-decoration:none;
+  font-size:14px;
   font-weight:bold;
-  display:inline-block;
   transition:.3s;
 }
 
+.whatsapp{ background:#25D366; color:white; }
+.grupo{ background:#5865F2; color:white; }
+
 .btn:hover{
   transform:scale(1.08);
+}
+
+/* COMPRA FINAL */
+.compra{
+  text-align:center;
+  margin-top:40px;
+}
+
+.btn-compra{
+  background:gold;
+  color:black;
+  padding:15px 25px;
+  border-radius:30px;
+  font-weight:bold;
+  text-decoration:none;
 }
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
-<div class="hero">
-  <h1>🚀 Generación DM</h1>
-  <p>De cero a emprendedor en 30 días</p>
-</div>
+<div class="contenedor">
 
-<!-- TARJETAS PREMIUM -->
-<div class="grid">
+<!-- ================= GENERACION DM ================= -->
+<div class="card" onclick="toggleCard(this)">
+  <img src="imagen1.jpeg">
+  <div class="titulo">Generación DM — De cero a emprendedor en 30 días</div>
 
-  <div class="card" onclick="abrir(0)">
-    <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df">
-  </div>
+  <div class="contenido">
+    <p>
+      Aprende desde cero cómo generar ingresos, iniciar tu negocio
+      y transformar tu mentalidad financiera en solo 30 días.
+    </p>
 
-  <div class="card" onclick="abrir(1)">
-    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f">
-  </div>
+    <video src="video1.mp4" controls></video>
 
-  <div class="card" onclick="abrir(2)">
-    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d">
-  </div>
+    <div class="botones">
+      <a class="btn whatsapp"
+         href="https://api.whatsapp.com/send?phone=5218331504445&text=Hola%20quiero%20entrar%20a%20Generación%20DM"
+         target="_blank">💬 WhatsApp</a>
 
-  <div class="card" onclick="abrir(3)">
-    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c">
-  </div>
-
-  <div class="card" onclick="abrir(4)">
-    <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7">
-  </div>
-
-</div>
-
-<!-- MODAL -->
-<div class="modal" id="modal">
-  <div class="modal-content">
-    <span class="close" onclick="cerrar()">✖</span>
-    <img id="imgModal" class="img-grande">
-
-    <div class="info">
-      <h3 id="titulo"></h3>
-      <p id="texto"></p>
-      <video id="video" controls src="video7.mp4"></video>
+      <a class="btn grupo"
+         href="https://chat.whatsapp.com/El5dTEOCeQ7JuZjoY1rv1r"
+         target="_blank">🚀 Grupo</a>
     </div>
   </div>
 </div>
 
-<!-- COMPRA -->
+<!-- ================= QUIEN SOY ================= -->
+<div class="card" onclick="toggleCard(this)">
+  <img src="imagen6.jpeg">
+  <div class="titulo">¿Quién soy?</div>
+
+  <div class="contenido">
+    <p>
+      Empresario enfocado en ayudar a personas a salir del empleo
+      tradicional y construir ingresos propios mediante sistemas
+      probados de emprendimiento.
+    </p>
+    <video src="video3.mp4" controls></video>
+  </div>
+</div>
+
+<!-- ================= COACHING ================= -->
+<div class="card" onclick="toggleCard(this)">
+  <img src="imagen10.jpeg">
+  <div class="titulo">Coaching y resultados</div>
+
+  <div class="contenido">
+    <p>
+      Personas reales aplicando el sistema Generación DM
+      y logrando cambios reales en ingresos y mentalidad.
+    </p>
+    <video src="video4.mp4" controls></video>
+  </div>
+</div>
+
+<!-- ================= TESTIMONIOS ================= -->
+<div class="card" onclick="toggleCard(this)">
+  <img src="imagen30.jpeg">
+  <div class="titulo">Testimonios</div>
+
+  <div class="contenido">
+    <p>
+      Historias reales de alumnos que decidieron cambiar su vida
+      y tomar acción.
+    </p>
+    <video src="video6.mp4" controls></video>
+  </div>
+</div>
+
+<!-- ================= COMPRA FINAL ================= -->
 <div class="compra">
-  <h2>💳 Acceso inmediato</h2>
-  <a href="https://mpago.la/1SEiJBr" target="_blank" class="btn" onclick="wa()">Comprar ahora</a>
+  <h2>🚀 Únete hoy a Generación DM</h2>
+  <a class="btn-compra" href="https://www.mercadopago.com.mx/link-de-pago" target="_blank">
+    💳 Comprar ahora
+  </a>
+</div>
+
 </div>
 
 <script>
-const data=[
-{
-titulo:"Emprende desde cero",
-texto:"Aprende a generar ingresos sin inversión y sin experiencia.",
-img:"https://images.unsplash.com/photo-1556740738-b6a63e27c4df"
-},
-{
-titulo:"Resultados reales",
-texto:"Personas comunes logrando ingresos en días.",
-img:"https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
-},
-{
-titulo:"Mentalidad millonaria",
-texto:"Cambia tu forma de pensar y transforma tu vida.",
-img:"https://images.unsplash.com/photo-1504384308090-c894fdcc538d"
-},
-{
-titulo:"Comunidad privada",
-texto:"Rodeate de personas que también quieren crecer.",
-img:"https://images.unsplash.com/photo-1519389950473-47ba0277781c"
-},
-{
-titulo:"Historias reales",
-texto:"Casos que te motivarán a dar el paso.",
-img:"https://images.unsplash.com/photo-1492724441997-5dc865305da7"
-}
-];
+function toggleCard(card){
+  const abierta = card.classList.contains("abierta");
 
-function abrir(i){
-document.getElementById("modal").style.display="flex";
-document.getElementById("imgModal").src=data[i].img;
-document.getElementById("titulo").innerText=data[i].titulo;
-document.getElementById("texto").innerText=data[i].texto;
-}
+  document.querySelectorAll(".card").forEach(c=>{
+    c.classList.remove("abierta");
+  });
 
-function cerrar(){
-document.getElementById("modal").style.display="none";
-}
-
-function wa(){
-setTimeout(()=>{
-window.open("https://wa.me/qr/Q3V6TYFKLD3EA1","_blank");
-},4000);
+  if(!abierta){
+    card.classList.add("abierta");
+    setTimeout(()=>{
+      card.scrollIntoView({behavior:"smooth", block:"start"});
+    },200);
+  }
 }
 </script>
 
