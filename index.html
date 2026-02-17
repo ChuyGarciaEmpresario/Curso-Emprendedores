@@ -13,14 +13,53 @@ body{
   color:white;
 }
 
-/* CONTENEDOR */
+/* ================= HEADER ================= */
+header{
+  background:linear-gradient(135deg,#22c55e,#16a34a);
+  padding:60px 20px;
+  text-align:center;
+}
+
+header h1{
+  font-size:28px;
+  max-width:800px;
+  margin:auto;
+}
+
+header p{
+  margin-top:15px;
+  opacity:.9;
+}
+
+.botones-top{
+  margin-top:25px;
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  padding:14px 22px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:bold;
+  transition:.3s;
+}
+
+.btn:hover{ transform:scale(1.08); }
+
+.whatsapp{ background:#020617; color:white; }
+.grupo{ background:#020617; color:white; }
+
+/* ================= CONTENEDOR ================= */
 .contenedor{
   max-width:1100px;
   margin:auto;
   padding:40px 20px;
 }
 
-/* TARJETAS */
+/* ================= TARJETAS ================= */
 .card{
   background:#020617;
   border-radius:18px;
@@ -29,14 +68,10 @@ body{
   cursor:pointer;
   transition:.4s;
   box-shadow:0 20px 60px rgba(0,0,0,.5);
-  position:relative;
 }
 
-.card:hover{
-  transform:scale(1.03);
-}
+.card:hover{ transform:scale(1.03); }
 
-/* IMAGEN */
 .card img{
   width:100%;
   height:230px;
@@ -49,35 +84,31 @@ body{
   transform:scale(1.05);
 }
 
-/* TITULO */
 .titulo{
   padding:20px;
   font-size:20px;
   font-weight:bold;
-  background:#020617;
 }
 
-/* CONTENIDO DESLIZABLE */
 .contenido{
   max-height:0;
   overflow:hidden;
   transition:.6s ease;
-  background:#020617;
+  padding:0 20px;
 }
 
 .card.abierta .contenido{
-  max-height:700px;
-  padding:20px;
+  max-height:800px;
+  padding-bottom:20px;
 }
 
-/* VIDEO */
 video{
   width:100%;
   border-radius:12px;
   margin-top:15px;
 }
 
-/* BOTONES */
+/* BOTONES INTERNOS */
 .botones{
   display:flex;
   gap:12px;
@@ -85,7 +116,7 @@ video{
   margin-top:15px;
 }
 
-.btn{
+.btn2{
   padding:12px 18px;
   border-radius:10px;
   text-decoration:none;
@@ -94,12 +125,10 @@ video{
   transition:.3s;
 }
 
-.whatsapp{ background:#25D366; color:white; }
-.grupo{ background:#5865F2; color:white; }
+.btn-wa{ background:#25D366; color:white; }
+.btn-grupo{ background:#5865F2; color:white; }
 
-.btn:hover{
-  transform:scale(1.08);
-}
+.btn2:hover{ transform:scale(1.08); }
 
 /* COMPRA FINAL */
 .compra{
@@ -120,81 +149,97 @@ video{
 
 <body>
 
+<!-- ================= HEADER VERDE ================= -->
+<header>
+  <h1>
+    Queremos tocar tu vida. Únete a Generación DM y pasa de empleado,
+    estudiante o ama de casa a emprendedor en 30 días.
+  </h1>
+
+  <p>Convierte tu idea en ingresos reales desde cero.</p>
+
+  <div class="botones-top">
+    <a class="btn whatsapp"
+       href="https://api.whatsapp.com/send?phone=5218331504445"
+       target="_blank">
+       💬 Quiero emprender
+    </a>
+
+    <a class="btn grupo"
+       href="https://chat.whatsapp.com/El5dTEOCeQ7JuZjoY1rv1r"
+       target="_blank">
+       🚀 Únete a la Generación DM
+    </a>
+  </div>
+</header>
+
 <div class="contenedor">
 
-<!-- ================= GENERACION DM ================= -->
+<!-- TARJETA 1 -->
 <div class="card" onclick="toggleCard(this)">
   <img src="imagen1.jpeg">
-  <div class="titulo">Generación DM — De cero a emprendedor en 30 días</div>
+  <div class="titulo">Generación DM — De cero a emprendedor</div>
 
   <div class="contenido">
     <p>
-      Aprende desde cero cómo generar ingresos, iniciar tu negocio
-      y transformar tu mentalidad financiera en solo 30 días.
+      Aprende cómo generar ingresos desde cero, conseguir clientes
+      y cambiar tu mentalidad financiera en solo 30 días.
     </p>
 
     <video src="video1.mp4" controls></video>
 
     <div class="botones">
-      <a class="btn whatsapp"
-         href="https://api.whatsapp.com/send?phone=5218331504445&text=Hola%20quiero%20entrar%20a%20Generación%20DM"
+      <a class="btn2 btn-wa"
+         href="https://api.whatsapp.com/send?phone=5218331504445"
          target="_blank">💬 WhatsApp</a>
 
-      <a class="btn grupo"
+      <a class="btn2 btn-grupo"
          href="https://chat.whatsapp.com/El5dTEOCeQ7JuZjoY1rv1r"
          target="_blank">🚀 Grupo</a>
     </div>
   </div>
 </div>
 
-<!-- ================= QUIEN SOY ================= -->
+<!-- TARJETA 2 -->
 <div class="card" onclick="toggleCard(this)">
   <img src="imagen6.jpeg">
   <div class="titulo">¿Quién soy?</div>
-
   <div class="contenido">
     <p>
-      Empresario enfocado en ayudar a personas a salir del empleo
-      tradicional y construir ingresos propios mediante sistemas
-      probados de emprendimiento.
+      Empresario enfocado en ayudar personas a crear ingresos propios
+      mediante sistemas reales de emprendimiento.
     </p>
     <video src="video3.mp4" controls></video>
   </div>
 </div>
 
-<!-- ================= COACHING ================= -->
+<!-- TARJETA 3 -->
 <div class="card" onclick="toggleCard(this)">
   <img src="imagen10.jpeg">
-  <div class="titulo">Coaching y resultados</div>
-
+  <div class="titulo">Coaching</div>
   <div class="contenido">
-    <p>
-      Personas reales aplicando el sistema Generación DM
-      y logrando cambios reales en ingresos y mentalidad.
-    </p>
+    <p>Resultados reales aplicando el sistema Generación DM.</p>
     <video src="video4.mp4" controls></video>
   </div>
 </div>
 
-<!-- ================= TESTIMONIOS ================= -->
+<!-- TARJETA 4 -->
 <div class="card" onclick="toggleCard(this)">
   <img src="imagen30.jpeg">
   <div class="titulo">Testimonios</div>
-
   <div class="contenido">
-    <p>
-      Historias reales de alumnos que decidieron cambiar su vida
-      y tomar acción.
-    </p>
+    <p>Personas que decidieron cambiar su vida.</p>
     <video src="video6.mp4" controls></video>
   </div>
 </div>
 
-<!-- ================= COMPRA FINAL ================= -->
+<!-- COMPRA FINAL -->
 <div class="compra">
   <h2>🚀 Únete hoy a Generación DM</h2>
-  <a class="btn-compra" href="https://www.mercadopago.com.mx/link-de-pago" target="_blank">
-    💳 Comprar ahora
+  <a class="btn-compra"
+     href="https://www.mercadopago.com.mx/link-de-pago"
+     target="_blank">
+     💳 Comprar ahora
   </a>
 </div>
 
