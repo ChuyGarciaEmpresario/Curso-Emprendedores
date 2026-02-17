@@ -27,7 +27,7 @@ body{
 /* GRID TARJETAS */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
   gap:20px;
   padding:40px 20px;
 }
@@ -38,16 +38,15 @@ body{
   overflow:hidden;
   cursor:pointer;
   transition:.4s;
-  position:relative;
 }
 
 .card:hover{
-  transform:scale(1.07);
+  transform:scale(1.08);
 }
 
 .card img{
   width:100%;
-  height:160px;
+  height:150px;
   object-fit:cover;
 }
 
@@ -66,12 +65,7 @@ body{
 .modal-content{
   width:90%;
   max-width:500px;
-  animation:fade .5s ease;
-}
-
-@keyframes fade{
-  from{transform:translateY(60px);opacity:0}
-  to{transform:translateY(0);opacity:1}
+  position:relative;
 }
 
 /* IMAGEN GRANDE */
@@ -109,8 +103,8 @@ video{
 
 .close{
   position:absolute;
-  top:15px;
-  right:20px;
+  top:-10px;
+  right:0;
   font-size:25px;
   cursor:pointer;
 }
@@ -146,7 +140,7 @@ video{
   <p>De cero a emprendedor en 30 días</p>
 </div>
 
-<!-- TARJETAS -->
+<!-- TARJETAS CON TUS IMÁGENES -->
 <div class="grid">
 
   <div class="card" onclick="abrir(0)">
@@ -158,6 +152,14 @@ video{
   </div>
 
   <div class="card" onclick="abrir(2)">
+    <img src="imagen31.jpeg">
+  </div>
+
+  <div class="card" onclick="abrir(3)">
+    <img src="imagen32.jpeg">
+  </div>
+
+  <div class="card" onclick="abrir(4)">
     <img src="imagen30.jpeg">
   </div>
 
@@ -192,16 +194,28 @@ img:"imagen6.jpeg",
 video:"video7.mp4"
 },
 {
-titulo:"Resultados reales",
-texto:"Personas normales logrando ingresos reales con este sistema.",
+titulo:"Testimonios",
+texto:"Personas reales logrando resultados con Generación DM.",
 img:"imagen10.jpeg",
 video:"video1.mp4"
 },
 {
-titulo:"Testimonios",
-texto:"Historias reales de alumnos que cambiaron su vida.",
-img:"imagen30.jpeg",
+titulo:"Resultados",
+texto:"Alumnos generando ingresos desde los primeros días.",
+img:"imagen31.jpeg",
 video:"video6.mp4"
+},
+{
+titulo:"Comunidad",
+texto:"Una comunidad enfocada en crecimiento y negocios.",
+img:"imagen32.jpeg",
+video:"video3.mp4"
+},
+{
+titulo:"Historias reales",
+texto:"Historias de personas que cambiaron su vida.",
+img:"imagen30.jpeg",
+video:"video1.mp4"
 }
 ];
 
@@ -218,7 +232,7 @@ document.getElementById("modal").style.display="none";
 document.getElementById("video").pause();
 }
 
-/* WHATSAPP DESPUÉS DE PAGAR */
+/* WhatsApp después de pagar */
 function wa(){
 setTimeout(()=>{
 window.open("https://wa.me/qr/Q3V6TYFKLD3EA1","_blank");
