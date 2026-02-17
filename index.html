@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Curso de Emprendedores</title>
+<title>Generación DM</title>
 
 <style>
 body{
   margin:0;
-  font-family:Arial, Helvetica, sans-serif;
-  background:#0f172a;
+  font-family:Arial, sans-serif;
+  background:#020617;
   color:white;
 }
 
@@ -21,110 +21,119 @@ body{
 }
 
 .hero h1{
-  font-size:32px;
-  margin-bottom:10px;
+  font-size:28px;
 }
 
-.hero p{
-  opacity:.9;
-}
-
-/* BOTONES */
-.btn{
-  display:inline-block;
-  margin-top:20px;
-  background:#22c55e;
-  color:white;
-  padding:14px 25px;
-  border-radius:12px;
-  text-decoration:none;
-  font-weight:bold;
-  transition:.3s;
-}
-
-.btn:hover{
-  transform:scale(1.07);
-  background:#16a34a;
-}
-
-/* SERVICIOS */
-.servicios{
-  padding:60px 20px;
-  text-align:center;
-}
-
-.grid-servicios{
+/* GRID TARJETAS */
+.grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
   gap:20px;
-  margin-top:30px;
+  padding:40px 20px;
 }
 
-.card-servicio{
-  position:relative;
+.card{
+  background:#0f172a;
+  border-radius:16px;
   overflow:hidden;
-  border-radius:18px;
   cursor:pointer;
   transition:.4s;
+  position:relative;
 }
 
-.card-servicio img{
-  width:100%;
-  height:180px;
-  object-fit:cover;
-  filter:brightness(.7);
-}
-
-.card-servicio:hover{
+.card:hover{
   transform:scale(1.07);
 }
 
-.titulo{
-  position:absolute;
-  bottom:10px;
-  left:10px;
-  color:white;
-  font-weight:bold;
-  font-size:18px;
+.card img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
 }
 
 /* MODAL */
 .modal{
-  display:none;
   position:fixed;
   top:0;left:0;
   width:100%;height:100%;
-  background:rgba(0,0,0,.8);
+  background:rgba(0,0,0,.85);
+  display:none;
   justify-content:center;
   align-items:center;
   z-index:999;
 }
 
 .modal-content{
-  background:white;
-  color:black;
-  padding:25px;
-  border-radius:18px;
+  width:90%;
   max-width:500px;
-  animation:subir .4s ease;
+  animation:fade .5s ease;
 }
 
-.modal-content span{
-  float:right;
-  cursor:pointer;
-  font-weight:bold;
-}
-
-@keyframes subir{
+@keyframes fade{
   from{transform:translateY(60px);opacity:0}
   to{transform:translateY(0);opacity:1}
 }
 
-/* FOOTER */
-.footer{
+/* IMAGEN GRANDE */
+.img-grande{
+  width:100%;
+  border-radius:20px;
+  animation:subir .5s ease;
+}
+
+@keyframes subir{
+  from{transform:translateY(80px)}
+  to{transform:translateY(0)}
+}
+
+/* TEXTO DESLIZADO */
+.info{
+  background:white;
+  color:black;
+  margin-top:-20px;
+  padding:20px;
+  border-radius:0 0 20px 20px;
+  animation:slideUp .6s ease;
+}
+
+@keyframes slideUp{
+  from{transform:translateY(100px);opacity:0}
+  to{transform:translateY(0);opacity:1}
+}
+
+video{
+  width:100%;
+  border-radius:12px;
+  margin-top:15px;
+}
+
+.close{
+  position:absolute;
+  top:15px;
+  right:20px;
+  font-size:25px;
+  cursor:pointer;
+}
+
+/* COMPRA */
+.compra{
   text-align:center;
-  padding:40px 20px;
-  opacity:.6;
+  padding:60px 20px;
+}
+
+.btn{
+  background:#22c55e;
+  padding:15px 25px;
+  border-radius:12px;
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
+  display:inline-block;
+  transition:.3s;
+}
+
+.btn:hover{
+  transform:scale(1.08);
 }
 </style>
 </head>
@@ -132,100 +141,88 @@ body{
 <body>
 
 <!-- HERO -->
-<section class="hero">
-  <h1>🚀 Curso de Emprendedores</h1>
-  <p>Aprende a generar ingresos desde cero aunque no tengas experiencia</p>
-  <a href="#comprar" class="btn">Quiero empezar</a>
-</section>
+<div class="hero">
+  <h1>🚀 Generación DM</h1>
+  <p>De cero a emprendedor en 30 días</p>
+</div>
 
-<!-- SERVICIOS -->
-<section class="servicios">
-  <h2>🔥 Lo que aprenderás</h2>
+<!-- TARJETAS -->
+<div class="grid">
 
-  <div class="grid-servicios">
-
-    <div class="card-servicio" onclick="abrirServicio(0)">
-      <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7">
-      <div class="titulo">Valida tu idea</div>
-    </div>
-
-    <div class="card-servicio" onclick="abrirServicio(1)">
-      <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296">
-      <div class="titulo">Modelo de negocio</div>
-    </div>
-
-    <div class="card-servicio" onclick="abrirServicio(2)">
-      <img src="https://images.unsplash.com/photo-1552664730-d307ca884978">
-      <div class="titulo">Ventas inteligentes</div>
-    </div>
-
-    <div class="card-servicio" onclick="abrirServicio(3)">
-      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71">
-      <div class="titulo">Marketing real</div>
-    </div>
-
+  <div class="card" onclick="abrir(0)">
+    <img src="imagen6.jpeg">
   </div>
-</section>
+
+  <div class="card" onclick="abrir(1)">
+    <img src="imagen10.jpeg">
+  </div>
+
+  <div class="card" onclick="abrir(2)">
+    <img src="imagen30.jpeg">
+  </div>
+
+</div>
 
 <!-- MODAL -->
-<div id="modalServicio" class="modal">
+<div class="modal" id="modal">
   <div class="modal-content">
-    <span onclick="cerrarServicio()">✖</span>
-    <h3 id="tituloServicio"></h3>
-    <p id="textoServicio"></p>
+    <span class="close" onclick="cerrar()">✖</span>
+    <img id="imgModal" class="img-grande">
+
+    <div class="info">
+      <h3 id="titulo"></h3>
+      <p id="texto"></p>
+      <video id="video" controls></video>
+    </div>
   </div>
 </div>
 
 <!-- COMPRA -->
-<section id="comprar" style="text-align:center;padding:60px 20px;background:#020617">
+<div class="compra">
   <h2>💳 Acceso inmediato</h2>
-  <p>Pago único — acceso para siempre</p>
-
-  <!-- BOTÓN DE PAGO -->
-  <a href="https://mpago.la/1SEiJBr" target="_blank" class="btn" onclick="enviarWhatsapp()">
-    Comprar ahora
-  </a>
-</section>
-
-<div class="footer">
-  © 2026 Curso de Emprendedores
+  <a href="https://mpago.la/1SEiJBr" target="_blank" class="btn" onclick="wa()">Comprar ahora</a>
 </div>
 
 <script>
-const datos = [
-  {
-    titulo:"Valida tu idea",
-    texto:"Aprende a comprobar si tu idea puede generar dinero antes de invertir tiempo o dinero."
-  },
-  {
-    titulo:"Modelo de negocio",
-    texto:"Crea una estructura clara para convertir cualquier idea en ingresos reales."
-  },
-  {
-    titulo:"Ventas inteligentes",
-    texto:"Estrategias para vender incluso si nunca has vendido nada."
-  },
-  {
-    titulo:"Marketing real",
-    texto:"Cómo conseguir clientes sin gastar en publicidad."
-  }
+const data=[
+{
+titulo:"¿Quién soy?",
+texto:"Empresario ayudando a personas a generar ingresos desde cero.",
+img:"imagen6.jpeg",
+video:"video7.mp4"
+},
+{
+titulo:"Resultados reales",
+texto:"Personas normales logrando ingresos reales con este sistema.",
+img:"imagen10.jpeg",
+video:"video1.mp4"
+},
+{
+titulo:"Testimonios",
+texto:"Historias reales de alumnos que cambiaron su vida.",
+img:"imagen30.jpeg",
+video:"video6.mp4"
+}
 ];
 
-function abrirServicio(i){
-  document.getElementById("modalServicio").style.display="flex";
-  document.getElementById("tituloServicio").innerText=datos[i].titulo;
-  document.getElementById("textoServicio").innerText=datos[i].texto;
+function abrir(i){
+document.getElementById("modal").style.display="flex";
+document.getElementById("imgModal").src=data[i].img;
+document.getElementById("titulo").innerText=data[i].titulo;
+document.getElementById("texto").innerText=data[i].texto;
+document.getElementById("video").src=data[i].video;
 }
 
-function cerrarServicio(){
-  document.getElementById("modalServicio").style.display="none";
+function cerrar(){
+document.getElementById("modal").style.display="none";
+document.getElementById("video").pause();
 }
 
-/* WHATSAPP AUTOMÁTICO */
-function enviarWhatsapp(){
-  setTimeout(()=>{
-    window.open("https://wa.me/qr/Q3V6TYFKLD3EA1","_blank");
-  },4000);
+/* WHATSAPP DESPUÉS DE PAGAR */
+function wa(){
+setTimeout(()=>{
+window.open("https://wa.me/qr/Q3V6TYFKLD3EA1","_blank");
+},4000);
 }
 </script>
 
