@@ -144,6 +144,30 @@ video{
   font-weight:bold;
   text-decoration:none;
 }
+  /* ===== SLIDER TESTIMONIOS ===== */
+.slider{
+  position:relative;
+  width:100%;
+  height:230px;
+  overflow:hidden;
+}
+
+.slider img{
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0;
+  transition:opacity 1.5s ease-in-out;
+}
+
+.slider img.active{
+  opacity:1;
+}
+
+.card.abierta .slider{
+  height:380px;
+}
 </style>
 </head>
 
@@ -200,11 +224,19 @@ video{
 </div>
 
 <!-- TARJETA 3 -->
+<!-- TARJETA TESTIMONIOS CON SLIDER -->
 <div class="card" onclick="toggleCard(this)">
-  <img src="imagen30.jpeg">
+  
+  <div class="slider">
+    <img src="imagen30.jpeg" class="slide active">
+    <img src="imagen31.jpeg" class="slide">
+    <img src="imagen32.jpeg" class="slide">
+  </div>
+
   <div class="titulo">Testimonios</div>
+
   <div class="contenido">
-    <p>Personas que decidieron cambiar su vida.</p>
+    <p>Personas que decidieron cambiar su vida con Generación DM.</p>
     <video src="video6.mp4" controls></video>
   </div>
 </div>
@@ -260,6 +292,15 @@ function toggleCard(card){
     },200);
   }
 }
+  // ===== SLIDER TESTIMONIOS FADE =====
+let slides = document.querySelectorAll(".slide");
+let indexSlide = 0;
+
+setInterval(()=>{
+  slides[indexSlide].classList.remove("active");
+  indexSlide = (indexSlide + 1) % slides.length;
+  slides[indexSlide].classList.add("active");
+}, 3500);
 </script>
 
 </body>
