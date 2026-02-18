@@ -108,7 +108,8 @@ header p{
 }
 
 .card.abierta .contenido{
-  max-height:800px;
+  max-height:90vh;
+  overflow-y:auto;
   padding-bottom:20px;
 }
 
@@ -178,6 +179,13 @@ video{
 .card.abierta .slider{
   height:380px;
 }
+  .contenido::-webkit-scrollbar{
+  width:6px;
+}
+.contenido::-webkit-scrollbar-thumb{
+  background:#22c55e;
+  border-radius:10px;
+}
   <style>
 /* TEXTO INDICADOR TARJETA 4 */
 .indicador-tocar{
@@ -193,6 +201,7 @@ video{
   50%{transform:scale(1.1);opacity:1}
   100%{transform:scale(1);opacity:.6}
 }
+  
 </style>
 </style>
 </head>
@@ -267,7 +276,7 @@ video{
     <video src="video6.mp4" controls></video>
 
     <!-- VIDEO EXTRA -->
-    <video src="video7.mp4" controls></video>
+    <video src="video1.mp4" controls></video>
   </div>
 </div>
 <!-- TARJETA 4 -->
